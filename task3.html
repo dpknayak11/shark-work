@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!-- InnerText:
+InnerText is a property of a DOM element that contains the text content of all its children. It is similar to the textContent property but it manipulates the visible text content of the element and its descendants. 
+ -->
+<div id="example">
+  <p>This is an example</p>
+</div>
+
+<!-- TextContent:
+The textContent property is a property of a DOM element that contains the text content of all its children and descendants. Unlike the innerText property, it does not manipulate the text content of the element and its descendants, but just returns it. -->
+<div id="example">
+  <p>This is an example</p>
+</div>
+
+<script>
+// access innerText
+let innerText = document.getElementById("example").innerText;
+console.log(innerText); // Output: "This is an example" 
+
+// access textContent
+let textContent = document.getElementById("example").textContent;
+console.log(textContent); // Output: "This is an example"
+    
+
+    document.getElementById("example").style.border="2px solid green"
+</script>
+</body>
+</html>
