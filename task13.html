@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task6,7,22</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"></script>
+    <style>
+        .font{
+            padding-top: 10px;
+            color: rgb(78, 80, 81);
+        }
+         div{
+            width: 50%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid orange;
+            border-radius: 3px;
+        }
+        h2{
+            text-align: center;
+            color:rgb(232 232 232);
+            font-size: xxx-large;
+            font-family: sans-serif;
+            margin-block: auto;
+        }
+        h3{
+            color: orange;
+            text-align: center;
+            margin-top: -35px;
+        }
+        h4{
+            text-align: center;
+            color: rgb(115, 116, 118);
+            font-family: system-ui;
+            font-size: small;
+            font-weight: 600;     
+        }
+        input {
+            font-size: 25px;
+            color: black;
+            width: 99%;
+            margin: 2px;
+            padding: 0;
+            margin-bottom: 13px;
+            border: 1px solid rgb(140, 139, 139);
+            border-radius: 2px;
+        }
+        button {
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        .date {
+            width: 48%;
+            display: inline;
+            font-size: revert;
+            padding: 6px 3px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form id="myform" action="#" onsubmit="saveToLocalStorage(event)">
+    <h2>Call</h2>
+    <h3>Book a call</h3>
+    <h4>Book a call slot our represetative will call you within 1hr of selected time. </h4><hr>
+       <label for="">Name:</label><br />
+       <input type="text" name="name" id="txtInput" required/><br />
+       <label for="">Email:</label><br />
+       <input type="email" name="email" id="txtInput" required/> <br/>
+       <button id="btn">Get a Call</button>
+   </form>
+</div>
+<ul id="listOfItem"></ul>
+<script>
+    document.getElementById("btn").addEventListener("click", function(){
+        var txtInput = document.getElementById("txtInput").value;
+        if(txtInput === "") alert("please enter some value");
+        else console.log(txtInput);
+    }) 
+    document.getElementById("btn").addEventListener("mouseover",function(){
+        console.log("Mouseover event triggered");
+    });
+    document.getElementById("btn").addEventListener("mouseout",function(){
+        console.log("Mouseout event triggered");
+    });
+    function saveToLocalStorage(event) {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        var obj = {
+            name,email
+        }
+    localStorage.setItem(obj.email, JSON.stringify(obj));   
+
+// clear the input after adding the item to the list
+
+      document.querySelector('input[type="text"]').value = '';
+      document.querySelector('input[type="email"]').value = '';
+    show(obj)
+    }
+    function show(obj){
+        var ultag = document.getElementById('listOfItem')
+        var litag = document.createElement('li')
+        litag.textContent= obj.name +" " + obj.email
+
+        const deleteButton = document.createElement('input')
+            deleteButton.type = "button"
+            deleteButton.value = "Delete"
+            deleteButton.onclick = () => {
+                localStorage.removeItem(obj.email)
+                litag.removeChild(litag)
+            }
+            litag.appendChild(deleteButton)
+            ultag.appendChild(litag)
+    }
+</script>
+</body>
+</html>
