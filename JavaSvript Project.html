@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <style>
+      #data{
+        display: grid;
+      }
+      select{
+        margin-bottom: 10px;
+      }
+      h1{
+        justify-content: center;
+        display: grid;
+      }
+      .text-white {
+      color: #fff!important;
+      font-size: 20px;
+      font-family: fantasy;
+      }
+    </style>
+</head>
+<body class="container" id="cover"></body>
+<div class="bg-image" id="iamgeBg" style=" background-image: url('https://mdbootstrap.com/img/new/standard/city/043.jpg');width: 100%;
+height: 520px;" >
+<div  class="container text-white ">
+  <h1> Expense Tracker </h1>
+   <form onsubmit="localdata(event)" class="row"> 
+    <div class="col-md-6 " id="data">
+      <label for="">Expense Amount: </label>
+      <input type="text" name="amount" id="amount" placeholder="Enter Expense Amount"> <br>
+      <label for="">Expense Description: </label>
+      <input type="text" name="description" id="description" placeholder="Enter Expense Description"><br>
+      <label>Choose a Category: </label>
+      <select name="category" id="category">
+        <option>Fuel</option>
+        <option>Food</option>
+        <option>Movie</option>
+        <option>Books</option>
+        <option>Other</option>
+      </select>
+      <button >Add Expense</button>
+      </div>
+      <div class="col-md-6">
+      <ul id="listOfItems" > </ul>
+      </div>
+    </form>
+  </div>
+</div>
+  <script>
+    function localdata(event){
+      event.preventDefault();
+      const amount = event.target.amount.value;
+      const description = event.target.description.value;
+      const category = event.target.category.value;
+      const obj = {amount,description,category}
+      // local server data save 
+      localStorage.setItem(obj.amount, JSON.stringify(obj))
+      OutData(obj);
+    }
+    function OutData(obj){
+      const ulTag = document.getElementById('listOfItems');
+      const liTag = document.createElement('li');
+      liTag.textContent = obj.amount + " - " + obj.description + " - " + obj.category + "  ";
+      liTag.className = "divider py-2 "
+      ulTag.appendChild(liTag);
+
+      // Creat delete button..
+      const deleteBut = document.createElement('input');
+      deleteBut.type = 'button';
+      deleteBut.value = ' Delete ';
+      deleteBut.className = 'btn delete float-right'
+      liTag.appendChild(deleteBut)
+
+      // data delete in output and local server
+      deleteBut.onclick = () => {
+        localStorage.removeItem(obj.description);
+        confirm('Are you sure!');
+        ulTag.removeChild(liTag)
+      }
+
+      // creat edit button .. 
+      const editBut = document.createElement('input');
+      editBut.type = "button";
+      editBut.value = " Edit ";
+      editBut.className = "btn btn-dark float-right";
+      liTag.appendChild(editBut);
+      
+      // data delete in output and local server
+      editBut.onclick = () => {
+        localStorage.removeItem(obj.description);
+        ulTag.removeChild(liTag);
+        document.getElementById("amount").value = obj.amount
+        document.getElementById("description").value = obj.description
+        document.getElementById("category").value = obj.category
+      }
+    }
+  </script>
+</body>
+</html>
