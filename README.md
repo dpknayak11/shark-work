@@ -1,2 +1,2 @@
-# shark-work
-https://www.geeksforgeeks.org/working-on-git-bash/
+ all Git commands 
+ click now: https://www.geeksforgeeks.org/working-on-git-bash/
