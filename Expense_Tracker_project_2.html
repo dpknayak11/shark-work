@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
-    <!-- Expense Tracker Using async await try catch then() -->
+    <!-- Expense Tracker Using async await try catch -->
     <style>
       .heading {
         text-align: center;
@@ -56,15 +56,13 @@
       #listOfItems li {
         margin: 10px 0 10px 0;
         list-style-type: none;
-        font-size:x-large;
+        font-size: x-large;
       }
     </style>
     <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
       integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
   </head>
   <body>
     <div class="heading">
@@ -90,12 +88,12 @@
 
     <script>
       // set API endpoint URL
-      let api = `https://crudcrud.com/api/7abc0709fccf4d3b8bbf8a421fe822da/appointmentData/`;
+      let api = `https://crudcrud.com/api/e214556d7b6c4dfba78e702644dd1824/appointmentData/`;
       let updatedObj = null;
       // handle form submission event
       async function lc(event) {
         event.preventDefault();
-        try{
+        try {
           const amount = event.target.amount.value;
           const description = event.target.description.value;
           const category = event.target.category.value;
@@ -105,20 +103,22 @@
           document.querySelectorAll('input[type="text"]').value = "";
           showUserOnScreen(obj);
           // send POST request to API endpoint
-          axios.post(`${api}`, obj)
-          .then((res) => { console.log(res);
-            alert("New Data upload done!");
-          });
-        } catch (err) { console.log(err); } // ReferenceError: obj is not defined
+          axios.post(`${api}`, obj);
+          alert("New Data upload done!");
+        } catch (err) {
+          console.log(err);// ReferenceError:
+        } 
       }
       // retrieve all users from API endpoint and display on screen
       window.addEventListener("DOMContentLoaded", () => {
         // send GET request to API endpoint
         axios.get(`${api}`)
-          .then((res) => { console.log(res);
+          .then((res) => {
+            console.log(res);
             // display users on screen
             for (let i = 0; i < res.data.length; i++) {
-              showUserOnScreen(res.data[i]);}
+              showUserOnScreen(res.data[i]);
+            }
           })
           .catch((err) => console.log(err));
       });
@@ -127,26 +127,24 @@
         const ulTag = document.getElementById("listOfItems");
         const liTag = document.createElement("li");
         liTag.textContent = `${obj.amount} - ${obj.description} - ${obj.category} `;
-
         // create delete button
         const deleteButton = document.createElement("input");
         deleteButton.type = "button";
         deleteButton.value = "Delete";
         deleteButton.className = "btn btn-danger btn-sm float-right delete";
-
         // delete data from output and local storage
         deleteButton.onclick = async () => {
           try {
             // remove user from local storage
             await localStorage.removeItem(obj.description);
             // send DELETE request to API endpoint
-            axios.delete(`${api}${obj._id}`)
-             .then((res) => { console.log(res);
-              // remove element from screen
-              ulTag.removeChild(liTag);
-              confirm("are you sure");
-            });
-          } catch (err) { console.log(err);}
+            axios.delete(`${api}${obj._id}`);
+            // remove element from screen
+            ulTag.removeChild(liTag);
+            confirm("are you sure");
+          } catch (err) {
+            console.log(err);
+          }
         };
         // create edit button
         const editButton = document.createElement("input");
@@ -173,14 +171,15 @@
                 amount: updatedamount,
                 description: updateddescription,
                 category: updatedcategory,
-              };
+              }
               localStorage.setItem(updatedObj, JSON.stringify(updatedObj));
               // send PUT request to API endpoint
-              axios.put(`${api}${obj._id}`, updatedObj)
-                .then((res) => console.log(res));
+              axios.put(`${api}${obj._id}`, updatedObj);
               // update element on screen
               showUserOnScreen(updatedObj);
-            } catch (err) { console.log(err); }
+            } catch (err) {
+              console.log(err);
+            }
           };
         };
         liTag.appendChild(deleteButton);
