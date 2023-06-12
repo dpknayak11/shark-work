@@ -1,0 +1,26 @@
+1. Why are we using Express JS ? Any reasons?
+    Express JS is a JavaScript back-end framework designed for web applications and APIs. It is used to build     user interfaces and create web applications quickly and easily. Express JS allows developers to create scalable web applications or interfaces quickly and easily by leveraging its built-in features, such as routing, templating, middleware, database integration, and so on. It is also very light-weight and fast, making it a popular choice for developing web applications.
+
+2. What are middlewares in nodejs ?
+    Middleware functions are functions that have access to the request object (req), the response object (res), 
+    and the next middleware function in the application’s request-response cycle. Middleware functions can 
+    perform the following tasks:
+    Execute any code.
+        Make changes to the request and the response objects.
+        End the request-response cycle.
+        Call the next middleware function in the stack.
+    Examples of middleware functions include authentication middleware, logging middleware, template engines, and 
+    parsers for request data.
+
+3. What is next used for in nodejs ?
+    Next is used in node.js as an async function to transition to the next middleware function in the route       
+    handling. It is often used in Express.js applications to handle asynchronous requests.
+
+4. What is res.send used for in node js ?
+    res.send is used in Node.js to send data (usually HTML or JSON) from the server to the client. This data is typically used to generate the contents of a webpage and will be rendered in the browser. It can also be used to send other types of data such as XML, text, or images.
+
+5. If I do res.send( { key1: value }) . What will be the content-type header equal to.
+    The content-type header would equal to "application/json".
+
+6. What does app.listen(3000) do behind the scenes ?
+    App.listen(3000) is a method used by Express.js (a web application framework). It tells the web server to listen for incoming requests on port 3000 of the host machine. It is listening for specific requests from clients on that port, and then forwarding data back to the client to be displayed. Behind the scenes, it sets up a connection between the server and the client, and then passes data back and forth.
