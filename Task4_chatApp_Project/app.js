@@ -1,5 +1,3 @@
-// This code is setting up an Express server with a login page and a messages page along with routes for each.
-
 // require the file system and express libraries
 const fs = require('fs');
 const express = require('express')
@@ -16,14 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // create a route for the login page
 app.get('/login', (req, res, next) => {
     // send an html form to the page which will POST to the /messages route
-    res.send(`<h> 1 .... </h1><form
+    res.send(`<form
     action="/messages" method="post"
     onsubmit="localStorage.setItem('username', document.getElementById('username').value)">
-    <h> 2 .... </h1>
     <input type="text" name="username" placeholder="enter username" id="username"/>
-    <h> 3 .... </h1>
     <button type="submit">Login</button>
-    <h> 4 .... </h1>
   </form>`)
 });
 
@@ -36,15 +31,10 @@ app.get('/messages', (req, res, next) => {
         if (err) { data = "No data exists"; }
         // send the file's data inside an html pre tag along with an html form to input messages
         res.send(`<pre> ${data} </pre>
-        <h> 5 .... </h1>
    <form action="/messages"  onsubmit="document.getElementById('username').value=localStorage.getItem('username' )" method="POST" >
-   <h> 6 .... </h1>
     <input type="text" id="message" name="message" placeholder="msg...">
-    <h> 7 .... </h1>
-    <input type="text" name="username" id="username">
-    <h> 8 .... </h1>
+    <input type="hidden" name="username" id="username">
     <button type="submit">send</button>
-    <h> 9 .... </h1>
     </form>`);
     });
 })
