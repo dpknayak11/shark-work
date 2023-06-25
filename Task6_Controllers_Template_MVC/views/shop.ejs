@@ -1,0 +1,41 @@
+<!-- // includes the head.ejs file which is required for the HTML head tag -->
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <!-- // includes the navigation.ejs file which cam be used for the navigation bar  -->
+    <%- include('includes/navigation.ejs') %>
+
+    <main>
+        <!-- // checks if any product has been submitted -->
+        <% if (prods.length > 0) { %>
+            <div class="grid">
+                <!-- // loops through the submitted products -->
+                <% for (let product of prods) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <!-- // prints the title of the product -->
+                            <h1 class="product__title"><%= product.title %></h1>
+                        </header>
+                        <div class="card__image">
+                        <img 
+src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQiIHgxPSIyNTYiIHgyPSIyNTYiIHkyPSI1MTIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlOWViZjUiLz48c3RvcCBvZmZzZXQ9IjAuNzYiIHN0b3AtY29sb3I9IiNiMGM3ZTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3Njk3YzYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHgxPSIyNzAuNDQiIHkxPSI0MTguMzkiIHgyPSIyNzAuNDQiIHkyPSI3Mi40MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwMDAxMyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwNWM5MiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjx0aXRsZT5hZGRfdG9fc2hvcHBpbmdfY2FydDwvdGl0bGU+PHBhdGggZD0iTTI1Niw1MTJjMTQxLDAsMjU2LTExNSwyNTYtMjU2UzM5NywwLDI1NiwwLDAsMTE1LDAsMjU2LDExNSw1MTIsMjU2LDUxMloiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIi8+PHBhdGggZD0iTTE3MS44OCwxMTguODV2MTUuOTNhOC43Myw4LjczLDAsMCwwLDguNjgsOC42OWgyOXYyOWE4LjczLDguNzMsMCwwLDAsOC42OSw4LjY5aDE1LjkzYTguNzMsOC43MywwLDAsMCw4LjY5LTguNjl2LTI5aDI5YTguNzQsOC43NCwwLDAsMCw4LjY5LTguNjlWMTE4Ljg1YTguNzQsOC43NCwwLDAsMC04LjY5LTguNjloLTI5di0yOWE4LjczLDguNzMsMCwwLDAtOC42OS04LjY5SDIxOC4zYTguNzMsOC43MywwLDAsMC04LjY5LDguNjl2MjloLTI5YTguNzMsOC43MywwLDAsMC04LjY4LDguNjlabS00OS4wOSw2OS43N0gzMTkuNDhjOC4wOSwwLDE0LjYyLjc4LDE5Ljg1LDIuM2wzMi0yNS45MWEzMi4yLDMyLjIsMCwwLDAtLjY1LDYuMjMsMjkuNTcsMjkuNTcsMCwwLDAsMTAuMTMsMjIuMzVsLTIzLjU4LDE5LjA5Yy41MSw2LS4xNSwxMy0xLjU4LDIxLjEybC0xNSw4NC41NmMtMi4xOSwxNC4zMy00LjcxLDI0LjQ1LTguOTEsMzEuNTRBMzkuNzksMzkuNzksMCwwLDAsMjc0LDM2Ni4xM0gxOTkuMzVhMzkuODksMzkuODksMCwwLDAtMzYtMjIuNzJBMzkuNDQsMzkuNDQsMCwwLDAsMTQ1LDM0Ny45M2MtMy4zOS01LjY5LTYuMy0xMi44OS05LjY3LTIyTDk3Ljg4LDIyNC44NmMtNi4yNi0xNi45MSwyLjItMzYuMjQsMjQuOTEtMzYuMjRabTI3Ny43Mi0yOS44M0ExMS41NiwxMS41NiwwLDEsMSwzODksMTcwLjMyYTExLjU2LDExLjU2LDAsMCwxLDExLjU0LTExLjU0Wm0tLjMxLTEyLjA4YTI0LjU0LDI0LjU0LDAsMSwwLDI0LjQ1LDI0LjUzLDI0LjQ4LDI0LjQ4LDAsMCwwLTI0LjQ1LTI0LjUzWk0zMTAsMzQ4LjUyYTM0LjkzLDM0LjkzLDAsMSwwLDM0Ljc4LDM0LjkzQTM0Ljg3LDM0Ljg3LDAsMCwwLDMxMCwzNDguNTJabTAsMTYuNTdhMTguMzYsMTguMzYsMCwxLDAsMTguMjYsMTguMzZBMTguMzMsMTguMzMsMCwwLDAsMzEwLDM2NS4wOVptLTE0Ni42LTE2LjU3YTM0LjkzLDM0LjkzLDAsMSwwLDM0LjgyLDM0LjkzLDM0Ljg2LDM0Ljg2LDAsMCwwLTM0LjgyLTM0LjkzWm0wLDE2LjU3YTE4LjM2LDE4LjM2LDAsMSwwLDE4LjI5LDE4LjM2LDE4LjMxLDE4LjMxLDAsMCwwLTE4LjI5LTE4LjM2Wk0xNDMuODQsMjE1LjcyYy03LjQ2LDAtMTMuNTIsNS4zOC0xMy41MiwxMS45MmgwYzAsNi42LDYuMDYsMTIsMTMuNTIsMTJIMzE4LjkxYzcuNDMsMCwxMy41NS01LjM2LDEzLjU1LTEyaDBjMC02LjU0LTYuMTEtMTEuOTItMTMuNTUtMTEuOTJabTE5LDQ1LjY5Yy03LjQxLDAtMTMuNTIsNS4zOC0xMy41MiwxMS45M2gwYzAsNi41OCw2LjExLDExLjk1LDEzLjUyLDExLjk1SDMwNy4zN2M3LjQ3LDAsMTMuNTMtNS4zOCwxMy41My0xMS45NWgwYzAtNi41Ni02LjA2LTExLjkzLTEzLjUzLTExLjkzWm0xNC4zOSw0Ny40NWMtNy40LDAtMTMuNTIsNS4zNS0xMy41MiwxMS45MmgwYzAsNi41Nyw2LjExLDExLjk0LDEzLjUyLDExLjk0SDI5Ni40NGM3LjQzLDAsMTMuNTMtNS4zNywxMy41My0xMS45NGgwYzAtNi41Ny02LjA5LTExLjkyLTEzLjUzLTExLjkyWiIgZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PHBhdGggZD0iTTE4Mi4wNSwxMTguODV2MTUuOTNhOC43Myw4LjczLDAsMCwwLDguNjgsOC42OWgyOS4wNXYyOWE4LjczLDguNzMsMCwwLDAsOC42OCw4LjY5SDI0NC40YTguNzIsOC43MiwwLDAsMCw4LjY5LTguNjl2LTI5aDI5LjA1YTguNzMsOC43MywwLDAsMCw4LjY5LTguNjlWMTE4Ljg1YTguNzQsOC43NCwwLDAsMC04LjY5LTguNjlIMjUzLjA4di0yOWE4LjczLDguNzMsMCwwLDAtOC42OS04LjY5SDIyOC40N2E4LjczLDguNzMsMCwwLDAtOC42OCw4LjY5djI5SDE5MC43M2E4LjczLDguNzMsMCwwLDAtOC42OCw4LjY5Wk0xMzMsMTg4LjYxaDE5Ni43YzguMSwwLDE0LjYzLjc4LDE5Ljg1LDIuM2wzMi0yNS45MWEzMi43NSwzMi43NSwwLDAsMC0uNjUsNi4yM0EyOS41NywyOS41NywwLDAsMCwzOTEsMTkzLjU4bC0yMy41OCwxOS4wOWMuNTEsNi0uMTUsMTMtMS41OCwyMS4xMmwtMTUsODQuNTZjLTIuMiwxNC4zMy00LjcxLDI0LjQ1LTguOTEsMzEuNTRhMzkuNzksMzkuNzksMCwwLDAtNTcuNywxNi4yNEgyMDkuNTJhMzkuODcsMzkuODcsMCwwLDAtMzYtMjIuNzIsMzkuNDIsMzkuNDIsMCwwLDAtMTguMzUsNC41MmMtMy40LTUuNjktNi4zLTEyLjg5LTkuNjctMjJsLTM3LjQ3LTEwMS4xYy02LjI2LTE2LjkxLDIuMi0zNi4yNCwyNC45LTM2LjI0Wm0yNzcuNzMtMjkuODNhMTEuNTYsMTEuNTYsMCwxLDEtMTEuNTQsMTEuNTQsMTEuNTYsMTEuNTYsMCwwLDEsMTEuNTQtMTEuNTRabS0uMzEtMTIuMDhhMjQuNTQsMjQuNTQsMCwxLDAsMjQuNDUsMjQuNTMsMjQuNDcsMjQuNDcsMCwwLDAtMjQuNDUtMjQuNTNaTTMyMC4xNCwzNDguNTJhMzQuOTMsMzQuOTMsMCwxLDAsMzQuNzgsMzQuOTMsMzQuODcsMzQuODcsMCwwLDAtMzQuNzgtMzQuOTNabTAsMTYuNTdhMTguMzYsMTguMzYsMCwxLDAsMTguMjYsMTguMzYsMTguMzMsMTguMzMsMCwwLDAtMTguMjYtMTguMzZaTTE3My41NSwzNDguNTJhMzQuOTMsMzQuOTMsMCwxLDAsMzQuODEsMzQuOTMsMzQuODYsMzQuODYsMCwwLDAtMzQuODEtMzQuOTNabTAsMTYuNTdhMTguMzYsMTguMzYsMCwxLDAsMTguMjksMTguMzYsMTguMzEsMTguMzEsMCwwLDAtMTguMjktMTguMzZaTTE1NCwyMTUuNzJjLTcuNDcsMC0xMy41Myw1LjM4LTEzLjUzLDExLjkyaDBjMCw2LjYsNi4wNiwxMiwxMy41MywxMkgzMjkuMDhjNy40MywwLDEzLjU1LTUuMzYsMTMuNTUtMTJoMGMwLTYuNTQtNi4xMi0xMS45Mi0xMy41NS0xMS45MlptMTksNDUuNjljLTcuNDIsMC0xMy41Miw1LjM4LTEzLjUyLDExLjkzaDBjMCw2LjU4LDYuMTEsMTEuOTUsMTMuNTIsMTEuOTVIMzE3LjU1YzcuNDcsMCwxMy41My01LjM4LDEzLjUzLTExLjk1aDBjMC02LjU2LTYuMDYtMTEuOTMtMTMuNTMtMTEuOTNabTE0LjM5LDQ3LjQ1Yy03LjQxLDAtMTMuNTIsNS4zNS0xMy41MiwxMS45MmgwYzAsNi41Nyw2LjExLDExLjk0LDEzLjUyLDExLjk0SDMwNi42MWM3LjQ0LDAsMTMuNTMtNS4zNywxMy41My0xMS45NGgwYzAtNi41Ny02LjA5LTExLjkyLTEzLjUzLTExLjkyWiIgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0yKSIvPjwvc3ZnPg==" alt="" />    
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">$50</h2>
+                            <p class="product__description">A very interesting book about so many even more interesting things!</p>
+                        </div>
+                        <div class="card__actions">
+                            <button class="btn">Add to Cart</button>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <!-- // if there are no products, then this line prints an error message -->
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+    <!-- // includes the ejs file for the HTML ending tags -->
+<%- include('includes/end.ejs') %>

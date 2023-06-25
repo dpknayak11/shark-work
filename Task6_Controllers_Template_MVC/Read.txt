@@ -1,0 +1,7 @@
+use: controllers, Template engine ejs.
+
+install npm 
+npm init
+npm i nodemon
+npm i express
+npm i ejs
