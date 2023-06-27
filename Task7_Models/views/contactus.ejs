@@ -1,0 +1,23 @@
+<!-- include the head.ejs in head section -->
+<%- include('includes/head.ejs') %>
+<!-- css files linked -->
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <!-- include the navigation.ejs in body section  -->
+  <%- include('includes/navigation.ejs') %>
+
+    <main>
+        <!-- form with action and method -->
+      <form class="product-form" action="/contactus" method="POST">
+        <div class="form-control">
+          <label for="contactus">Contactus</label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <button class="btn" type="submit">Add</button>
+      </form>
+    </main>
+    <!-- include the end.ejs in the end -->
+<%- include('includes/end.ejs') %>
