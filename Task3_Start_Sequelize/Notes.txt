@@ -1,0 +1,7 @@
+Q.1 Explain what is sequelize and the need to sequelize?
+Sequelize is a Node.js ORM for SQL databases. It helps to write queries using JavaScript and handle database operations. Sequelize makes it easier to work with SQL databases in Node.js applications.
+
+Q.2 What are different types of relations in SQL and how to implement these relations with sequelize? 
+a) One-to-one: One record in one table matches one record in another table. Use hasOne and belongsTo associations.
+b) One-to-many: One record in one table matches zero or more records in another table. Use hasMany and belongsTo associations.
+c) Many-to-many: Zero or more records in one table match zero or more records in another table. Use belongsToMany association with a junction table.
