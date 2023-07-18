@@ -3,7 +3,7 @@ const Expense = require('../module/expense')
 
 // Define a controller function to render the form view with all users
 exports.getAddExpense = (req, res, next) => {
-    // Find all users from the database using Sequelize
+    // Find all users from the database using Sequelize..
     Expense.findAll()
         .then(expense => {
             // Render the form view with the user data, page title, path and edit mode
