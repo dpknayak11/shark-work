@@ -71,7 +71,7 @@ exports.updateExpense = (req, res, next) => {
         .then(expense => {
             // Update the user properties with the modified values
             expense.amount = modifiedAmount;
-            expense.number = modifiedDescription;
+            expense.description = modifiedDescription;
             expense.email = modifiedCategory;
             // Save the updated user to the database using Sequelize
             return expense.save();
