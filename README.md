@@ -1,2 +1,1 @@
- all Git commands 
- click now: https://www.geeksforgeeks.org/working-on-git-bash/
+Mid DSA(Problem Solving), Small Projects Uses: HTML, CSS, Bootstrap, JavaScript, NodeJs, ExpressJs, Postman, MySQL, Sequlize(ORM), FS-Module, LocalStorage, All Task: API, CRUD Opretions, Promisses, Async-Await, CallBack, Routing , ETC....
