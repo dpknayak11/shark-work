@@ -1,0 +1,44 @@
+<%- include('includes/upperBody.ejs') %>
+<div class="form">
+  <h1>Product Seller Admin App</h1>
+  <form class="product-form"  action="/<%= isEdit ? 'update-product' : 'add-product' %>" method="POST">
+    
+    <div class="form-control">
+      <label for="price">Product Price: </label>
+      <input type="number" name="price" id="price" value="<%= products.price %>"/>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Product Name: </label>
+      <input type="text" name="name" id="name" value="<%= products.name %>" />
+    </div>
+
+    <% if(isEdit){ %>
+    <input type="hidden" name="productId" value="<%= products.id %>" />
+    <% } %>
+    <button class="button" type="submit">
+      <%= isEdit ? "Update" : "Add Product" %> 
+      
+    </button>
+  </form>
+</div>
+<!-- Show Data -->
+<div class="container">
+  <% if(products.length > 0){ %> 
+    <% let totalValue = 0; %>
+     <% for(let product of products) { %>
+        <div class="user-container">
+          <div class="user-info"><%= product.price %> - <%= product.name %></div> 
+          <form action="/delete-product" method="POST">
+              <a href="/edit-product/<%= product.id %>?isEditing=true" class="button">Edit</a>
+              <input type="hidden" value="<%= product.id %>" name="productId"/>
+              <button type="submit" class="button">Delete</button>
+          </form>
+        </div>
+    <%totalValue += product.price %> <% } %><hr>
+    <h2>Total Value Worth of Products: <%= totalValue %></h2>
+  <% } else {%>
+  <h1>No Data Found. &#128531; </h1>
+  <% } %>
+</div>
+<%- include('includes/end.ejs') %>

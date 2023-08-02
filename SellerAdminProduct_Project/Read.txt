@@ -1,0 +1,5 @@
+I have Use: MVC
+HTML, CSS, JavaScript,
+NodeJs, Express, MySql, Sequelize(ORM), EJS.
+
+Dependencies: ejs,express,mysql2,nodemon,sequelize
