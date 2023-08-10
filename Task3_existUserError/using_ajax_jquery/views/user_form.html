@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Form</title>
+</head>
+<body>
+  <h1>User Form</h1>
+  <form id="user-form" method="post" action="/">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="message"></p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    
+      $('#user-form').submit(function(event) {
+        event.preventDefault();
+        var formData = $(this).serialize();
+        $.post('/', formData, function(data) { $('#message').text(data.message) });
+      });
+    
+  </script>
+</body>
+</html>
