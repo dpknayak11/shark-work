@@ -1,0 +1,1 @@
+npm i nodemone express sequelize mysql2 cors jsonwebtoken bcrypt
