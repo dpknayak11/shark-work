@@ -1,0 +1,9 @@
+npm i nodemon express sequelize mysql2 cors jsonwebtoken bcrypt nodemailer razorpay uuid dotenv
+Full_ExpenseTrackerApp using : 
+HTML5, CSS, JavaScript, DOM, 
+Nodejs, ExpressJs, MySQL,
+Sequelize, MVC-Model, 
+JWT ( Authentication), Payment Getway (Rayzorpay), 
+Relationship Association,  Etc.
+
+Leaderboard Optimisation: 50eea362f40f423aa46a844bfb2046a3ea2ec7bf
